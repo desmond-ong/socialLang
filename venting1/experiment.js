@@ -291,9 +291,7 @@ Parameters for this sequence.
   startTime: 0,
   endTime: 0,
 
-  condition: Math.floor(Math.random()*2),
-  control: -1,
-  nonliteral: -1,
+  nonliteral: Math.round(Math.random()),
   
   // My Results:
   happy1: -1,
@@ -312,8 +310,8 @@ Parameters for this sequence.
   anger2: -1,
   regret2: -1,
 
-  response1reactionTime: -1,
-  response2reactionTime: -1,
+  response1ReactionTime: -1,
+  response2ReactionTime: -1,
   freeResponseReactionTime: -1,
 
   consent: -1,
@@ -341,25 +339,16 @@ An array to store the data that we’re collecting.
   description: function() {
     showSlide("description");
 
-    if(experiment.condition==-1) {
-      // control: no instructions (will not get selected; in this version of the experiment, there are only
-        //two conditions: straightfoward and sarcastic).
-      experiment.control = 1;
-      experiment.nonliteral = 0;
-    } else if (experiment.condition==0) {
-      // literal language
-      experiment.control = 0;
-      experiment.nonliteral = 0;
+    if (experiment.nonliteral==0) {
+      // literal language / straightforward
       $('#ventingManipulation').html("<br>Try to be as straightforward as you can in your descriptions.");
     } else {
-      // nonliteral language
-      experiment.control = 0;
-      experiment.nonliteral = 1;
+      // nonliteral language / sarcastic
       $('#ventingManipulation').html("<br>Try to be as sarcastic as you can in your descriptions.");
-    }
+    };
 
     if (turk.previewMode) {
-      alert ( "Please accept the HIT before continuing." );;
+      alert ( "Please accept the HIT before continuing." );
     };
 
     $('#response1').hide();
@@ -402,7 +391,7 @@ The function that gets called when the sequence is finished.
 
     showSlide("writing");
     
-    experiment.response1reactionTime = experiment.endTime - experiment.startTime;
+    experiment.response1ReactionTime = experiment.endTime - experiment.startTime;
     experiment.startTime = (new Date()).getTime();
   },
 
@@ -430,7 +419,7 @@ The function that gets called when the sequence is finished.
     
     showSlide("askInfo");
 
-    experiment.response2reactionTime = experiment.endTime - experiment.startTime;
+    experiment.response2ReactionTime = experiment.endTime - experiment.startTime;
     // experiment.startTime = (new Date()).getTime();
   }
 
