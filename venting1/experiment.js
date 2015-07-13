@@ -291,7 +291,7 @@ Parameters for this sequence.
   startTime: 0,
   endTime: 0,
 
-  condition: Math.floor(Math.random()*3),
+  condition: Math.floor(Math.random()*2),
   control: -1,
   nonliteral: -1,
   
@@ -341,20 +341,21 @@ An array to store the data that we’re collecting.
   description: function() {
     showSlide("description");
 
-    if(experiment.condition==0) {
-      // control: no instructions
+    if(experiment.condition==-1) {
+      // control: no instructions (will not get selected; in this version of the experiment, there are only
+        //two conditions: straightfoward and sarcastic).
       experiment.control = 1;
       experiment.nonliteral = 0;
-    } else if (experiment.condition==1) {
+    } else if (experiment.condition==0) {
       // literal language
       experiment.control = 0;
       experiment.nonliteral = 0;
-      $('#ventingManipulation').html("<br>Please try not to use any nonliteral language, like sarcasm and irony");
+      $('#ventingManipulation').html("<br>Try to be as straightforward as you can in your descriptions.");
     } else {
       // nonliteral language
       experiment.control = 0;
       experiment.nonliteral = 1;
-      $('#ventingManipulation').html("<br>Please try to use more nonliteral language, like sarcasm and irony.");
+      $('#ventingManipulation').html("<br>Try to be as sarcastic as you can in your descriptions.");
     }
 
     if (turk.previewMode) {

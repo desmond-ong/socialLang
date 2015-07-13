@@ -26,7 +26,7 @@ supposed to be shown at each stage of the experiment. -->
   <img src="https://www.stanford.edu/~dco/common/images/stanford.png" alt="Stanford University">
     <p id='logo-text'>Stanford Computation and Cognition Lab</p>
   <p class="block-text">
-  In this experiment, we are interested in self-disclosure and empathy. You may be asked to write about a personal event.
+  In this study, we are interested in how people describe events that happened to them. You may be asked to write about a personal memory.
   </p>
   <button type="button" onclick="this.blur(); if (turk.previewMode) { alert ( 'Please accept the HIT before continuing.' ); } else {experiment.description();}">Start</button>
     <p class="block-text" id="legal">Legal information: By answering the
@@ -174,16 +174,16 @@ function ValidateAnchor() {
 
 <div class="slide" id="description">
     <p id='logo-text'>Instructions</p>
-    <p class="block-text"> In this study, we are interested in self-disclosure, and we will be asking you to write about a personal event. Don't worry, your writing will remain anonymous! </p>
+    <p class="block-text"> In this study, we are interested in how people describe negative events. You will be asked to write about a situation in which you felt angry. Don't worry, your writing will remain completely anonymous! </p>
     <br>
-    <p class="block-text"> First, think about a recent event that occured between someone (e.g., family, significant other, friend, colleague) and yourself, that made you <b>angry</b>. </p>
+    <p class="block-text"> First, think about a time when someone you know (e.g., a family member, significant other, friend, or colleague) made you feel <b>angry</b>. </p>
     
     <center>
         <button id="showResponse1" onclick="this.blur(); experiment.startTime = (new Date()).getTime(); $('#response1').show(); $('#showResponse1').hide(); ">Ok</button>
     </center>
     <br>
     <div id="response1">
-    <p class="block-text"> Please rate how much of the following emotions you feel now, thinking back on the <b>angry</b> event. </p>
+    <p class="block-text"> Please rate how much of the following emotions you feel now as you think back on the <b>angry</b> event. </p>
     
     <form name="happy1form">
         &nbsp; Happiness: &nbsp; &nbsp; 
@@ -312,9 +312,12 @@ function ValidateAnchor() {
 
 
 <div class="slide" id="writing">
-    <p class="block-text"> Now, we would like you to write a short paragraph about the negative event. Imagine you are telling this to an anonymous person to vent your frustrations. <b><span id="ventingManipulation"> </span></b>
+    <p class="block-text"> Now, imagine that you are describing this event to another person.
+        What happened? Why did you feel angry? 
         <br><br>
-        Please write a short paragraph below (at least 50 words, or about 5 lines) in the box below.
+        Please write a short paragraph below (at least 50 words, or about 5 lines) describing this event in the box below.
+        </br>
+     <b><span id="ventingManipulation"> </span></b>
     </p>
 
     <center>
@@ -329,7 +332,7 @@ function ValidateAnchor() {
 
 
 <div class="slide" id="response2">
-    <p class="block-text"> How did that make you feel? Please rate how much of the following emotions you feel now, after writing, thinking back on the <b>angry</b> event. </p>
+    <p class="block-text"> Please rate how much of the following emotions you feel now after writing about the <b>angry</b> event.</p>
     <center>
     <form name="happy2form">
         &nbsp; Happiness: &nbsp; &nbsp; 
