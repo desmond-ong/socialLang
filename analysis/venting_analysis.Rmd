@@ -1,0 +1,64 @@
+---
+title: "venting analysis"
+author: "Desmond Ong, Justine Kao"
+date: "July 14, 2015"
+output: html_document
+---
+
+```{r study1, echo=FALSE}
+#source("common.R")
+library(ggplot2)
+setwd("~/Git/socialLang/analysis")
+
+study1 <- read.csv('venting1-results.csv', header=T)
+
+ggplot(study1, aes(x=freeResponseReactionTime/1000)) + geom_histogram(aes(y=..density..), binwidth=5, colour="black", fill="white") + geom_density(alpha=.2, fill="#FF6666")  
+
+# 42 literal
+# 58 nonliteral
+
+study1$deltaHappy = study1$happy2 - study1$happy1
+study1$deltaSad = study1$sad2 - study1$sad1
+study1$deltaAmuse = study1$amuse2 - study1$amuse1
+study1$deltaContent = study1$content2 - study1$content1
+study1$deltaDisapp = study1$disapp2 - study1$disapp1
+study1$deltaAnger = study1$anger2 - study1$anger1
+study1$deltaRegret = study1$regret2 - study1$regret1
+
+summary(lm(happy1 ~ nonliteral, study1))
+summary(lm(sad1 ~ nonliteral, study1))
+summary(lm(amuse1 ~ nonliteral, study1))
+summary(lm(content1 ~ nonliteral, study1))
+summary(lm(disapp1 ~ nonliteral, study1))
+summary(lm(anger1 ~ nonliteral, study1))
+summary(lm(regret1 ~ nonliteral, study1))
+
+summary(lm(deltaHappy ~ nonliteral, study1))
+summary(lm(deltaSad ~ nonliteral, study1))
+summary(lm(deltaAmuse ~ nonliteral, study1))
+summary(lm(deltaContent ~ nonliteral, study1))
+summary(lm(deltaDisapp ~ nonliteral, study1))
+summary(lm(deltaAnger ~ nonliteral, study1))
+summary(lm(deltaRegret ~ nonliteral, study1))
+
+
+summary(lm(deltaHappy ~ nonliteral * ventingResponseLength, study1))
+summary(lm(deltaSad ~ nonliteral * ventingResponseLength, study1))
+summary(lm(deltaAmuse ~ nonliteral * ventingResponseLength, study1))
+summary(lm(deltaContent ~ nonliteral * ventingResponseLength, study1))
+summary(lm(deltaDisapp ~ nonliteral * ventingResponseLength, study1))
+summary(lm(deltaAnger ~ nonliteral * ventingResponseLength, study1))
+summary(lm(deltaRegret ~ nonliteral * ventingResponseLength, study1))
+
+
+summary(lm(deltaHappy ~ nonliteral * gender, study1))
+summary(lm(deltaSad ~ nonliteral * gender, study1))
+summary(lm(deltaAmuse ~ nonliteral * gender, study1))
+summary(lm(deltaContent ~ nonliteral * gender, study1))
+summary(lm(deltaDisapp ~ nonliteral * gender, study1))
+summary(lm(deltaAnger ~ nonliteral * gender, study1))
+summary(lm(deltaRegret ~ nonliteral * gender, study1))
+
+
+
+```
